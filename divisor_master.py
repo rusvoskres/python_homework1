@@ -38,12 +38,13 @@ def get_max_simple_divider(num, isSimleDividerOnly=True):
 # 4. Pro - Делаем каноническое разложение числа на простые множители:
 def get_canon_decomposition_num(num):
     decomp_list=[]
-    remainder=int(num)
-    while remainder>2: #not is_num_simple(remainder):
+    remainder=int(num) # это еще неразложенный на простые множители остаток
+    min_simple_div=2
+    while remainder>2:
         # print(remainder)
-        max_div=int(math.sqrt(remainder)) # мин. делитель не может быть больше кв. корня числа
+        max_simple_div=int(math.sqrt(remainder)) # мин. делитель не может быть больше кв. корня числа
         is_div_found=False
-        for i in range(2,max_div+1):
+        for i in range(min_simple_div,max_simple_div+1):
             # print(remainder, i)
             if remainder%i==0: #нашли наименьший делитель
                 # print(remainder, i, '!!!')
@@ -51,6 +52,11 @@ def get_canon_decomposition_num(num):
                 remainder=int(remainder/i)
                 is_div_found=True
                 break
+            else:
+                # если не i не является делителем для остатка,
+                # то тем более он не будет делителем в будущих меньших остатках
+                # и его и меньшие числа можно не проверять на делители
+                min_simple_div=i+1
 
         if remainder==2:
             decomp_list.append(remainder)
@@ -72,7 +78,7 @@ if __name__=='__main__':
     # 5. Определяем самый большой (не обязательно простой) делитель числа - при isSimleDividerOnly=False:
     print(get_max_simple_divider(282, isSimleDividerOnly=False))
     # 4. Pro - Делаем каноническое разложение числа на простые множители:
-    print(get_canon_decomposition_num(897924289))
+    print(get_canon_decomposition_num(897924289*991))
     print(get_canon_decomposition_num(3400))
     print(get_canon_decomposition_num(1024))
     print(get_canon_decomposition_num(7))
