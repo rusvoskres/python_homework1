@@ -43,17 +43,18 @@ def Last_Log_file(filename):
     # print(sorted_lines[0])
     return sorted_lines[0][0:23]
 
-Names=['Алексей', 'Анна', 'Александр', 'Екатерина', 'Павел', 'Мария', 'Артемий', 'Андрей', 'Ирина', 'Олимпиада'
-    , 'Надежда', 'Сергей', 'Вера', 'Любовь', 'Тимофей', 'Иоанн', 'Пётр', 'Ксения', 'София', 'Марфа']
+if __name__=='__main__' :
+    Names=['Алексей', 'Анна', 'Александр', 'Екатерина', 'Павел', 'Мария', 'Артемий', 'Андрей', 'Ирина', 'Олимпиада'
+        , 'Надежда', 'Сергей', 'Вера', 'Любовь', 'Тимофей', 'Иоанн', 'Пётр', 'Ксения', 'София', 'Марфа']
 
-ch_list=F(Names, N=100)
-print(ch_list)
+    ch_list=F(Names, N=100)
+    print(ch_list)
 
-print(Common_Word(ch_list))
+    print(Common_Word(ch_list))
 
-print(Rare_Letter(ch_list))
+    print(Rare_Letter(ch_list))
 
-print(Last_Log_file('log'))
+    print(Last_Log_file('log'))
 
 
 # with open('log','r') as f:

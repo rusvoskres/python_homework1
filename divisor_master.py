@@ -40,6 +40,8 @@ def get_canon_decomposition_num(num):
     decomp_list=[]
     remainder=int(num) # это еще неразложенный на простые множители остаток
     min_simple_div=2
+    if remainder<=min_simple_div:
+        decomp_list.append(remainder)
     while remainder>2:
         # print(remainder)
         max_simple_div=int(math.sqrt(remainder)) # мин. делитель не может быть больше кв. корня числа
@@ -53,7 +55,7 @@ def get_canon_decomposition_num(num):
                 is_div_found=True
                 break
             else:
-                # если не i не является делителем для остатка,
+                # если i не является делителем для остатка,
                 # то тем более он не будет делителем в будущих меньших остатках
                 # и его и меньшие числа можно не проверять на делители
                 min_simple_div=i+1
