@@ -25,7 +25,7 @@ print(type(my_text), my_text)
 # 3) привести все слова к нижнему регистру (map);
 # 5) выполнить light с условием: в пункте 2 дополнительно к приведению к нижнему регистру выполнить лемматизацию.
 my_list=list(map(lambda x:morph.parse(x.lower())[0].normal_form
-                 , list(filter(lambda x:x!='' # отфилььровываем пустые элементы
+                 , list(filter(lambda x:x!='' # отфильтровываем пустые элементы
 # 2) сформировать list со словами (split);
                                , my_text.split(' '))) ))
 print(type(my_list),my_list)

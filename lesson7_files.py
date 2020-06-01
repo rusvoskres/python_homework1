@@ -28,10 +28,12 @@ field_names=['brand', 'model', 'consumption', 'price']
 with open('cars.txt', "r", encoding="utf-8") as f:
     car_info=csv.DictReader(f, delimiter=',', fieldnames=field_names)
     print(car_info)
+    # Если задано несколько машин, то делает 3 отчета для каждой
     for cur_car in car_info:
         print(cur_car)
         print(cur_car['brand'])
         ds = datetime.datetime.now()
+        # Формируем файл Word
         generate_report(brand=cur_car['brand'],model=cur_car['model'], consumption=cur_car['consumption'], price=cur_car['price'])
         # Pro - вычисляем и сохраняем время ген. отчета Word в доп. поле словаря
         time_gen_report_mks=(datetime.datetime.now() - ds).microseconds
@@ -44,9 +46,9 @@ with open('cars.txt', "r", encoding="utf-8") as f:
             writer = csv.DictWriter(f, delimiter=';', fieldnames=field_names)
             writer.writeheader()
             writer.writerow(cur_car)
-
+        # Формируем файл JSON
         with open(filename+'_json.txt', 'w', newline='', encoding="utf-8") as f:
-            json.dump(cur_car,f)
+            json.dump(cur_car,f, ensure_ascii=False)
 
 
 
