@@ -48,7 +48,7 @@ with open('cars.txt', "r", encoding="utf-8") as f:
             writer.writerow(cur_car)
         # Формируем файл JSON
         with open(filename+'_json.txt', 'w', newline='', encoding="utf-8") as f:
-            json.dump(cur_car,f)
+            json.dump(cur_car,f, ensure_ascii=False)
 
 
 
